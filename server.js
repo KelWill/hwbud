@@ -11,9 +11,9 @@ var port = process.env.PORT || 3000;
 //   Database   //
 //creating connection with database
 var db = mysql.createConnection({
-  host     : process.env.HOST,
-  user     : process.env.USER,
-  password : process.env.PASSWORD,
+  host     : HOST,
+  user     : USER,
+  password : PASSWORD,
 });
 
 //To guard against XSS
