@@ -2,7 +2,9 @@
   "name": "homeworkbuddy",
   "version": "0.0.0",
   "dependencies": {
-    "angular": "0.0.4"
+    "angular": "0.0.4",
+    "passport": "~0.1.17",
+    "passport-local": "~0.1.6"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
