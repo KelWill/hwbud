@@ -1,11 +1,11 @@
-//Requiring Modules
-var mysql = require('mysql');
-var express = require('express');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var assignments = require('./helpers/assignments');
-var grading = require('./helpers/grading');
-var review = require('./helpers/review');
+// //Requiring Modules
+// var mysql = require('mysql');
+// var express = require('express');
+// var passport = require('passport');
+// var LocalStrategy = require('passport-local').Strategy;
+// var assignments = require('./helpers/assignments');
+// var grading = require('./helpers/grading');
+// var review = require('./helpers/review');
 
 app.get('/', function(request,response)){
   response.end('HELLO WORLD');
