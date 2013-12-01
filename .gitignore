@@ -1,1 +1,3 @@
 .ebextensions
+bower_components
+node_modules
