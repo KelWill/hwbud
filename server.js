@@ -6,9 +6,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var assignments = require('./helpers/assignments');
 var grading = require('./helpers/grading');
 var review = require('./helpers/review');
-var process = require('./helpers/process')
 
-console.log(process);
 var port = process.env.PORT || 3000;
 //   Database   //
 //creating connection with database
