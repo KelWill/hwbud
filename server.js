@@ -47,8 +47,10 @@ app.configure(function() {;
   app.use(express.static(__dirname));
 });
 
+console.log(__dirname);
+
 app.get('/', function(request, response){
-  response.sendfile('home.html');
+  response.sendfile('index.html');
 });
 
 //Check to see if a user is logged in
@@ -58,7 +60,7 @@ app.get('/loggedin', function(request, response){
 })
 
 app.get('/teacher/create', function(request, response){
-  response.sendfile('home.html');
+  response.sendfile('index.html');
 });
 
 app.get('/student', function(request, response){
