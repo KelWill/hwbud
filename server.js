@@ -17,17 +17,23 @@ var db = mysql.createConnection({
   user     : process.env.USER,
   password : process.env.PASSWORD,
 });
-
+var message = '';
 //connecting to database and using correct table
 db.connect(function(err){
-  if (err) { console.log(err); }
+  if (err) { message = "not connected to database" } else {
+    message = "connected successfully to the database";
+  }
 });
+
 
 db.query('USE hwBud', function(err){
   if (err) { console.log(err); }
 });
 
 var app = express();
+app.get('*', function(request,response){
+  response.end(message);
+})
 //configuring express app
 app.configure(function() {;
   app.use(express.cookieParser());
