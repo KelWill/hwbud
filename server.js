@@ -12,7 +12,7 @@ var app = express()
 app.get('/', function(request,response)){
   response.end('HELLO WORLD');
 })
-var port = 3000;
+var port = process.env.port || 3000;
 // //   Database   //
 // //creating connection with database
 // var db = mysql.createConnection({
