@@ -12,7 +12,8 @@ var port = process.env.port || 3000;
 
 http.createServer(function(request, response){
   response.writeHead(200, {'content-type': 'text/plain'});
-  response.end('hello world');
+  response.write(process.env);
+  response.end();
 }).listen(port);
 
 // var express = require('express');
