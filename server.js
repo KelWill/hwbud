@@ -13,7 +13,7 @@ var express = require('express');
 
 http.createServer(function(request, response){
   response.writeHead(200, {'content-type': 'text/plain'});
-  response.write(JSON.stringify(express));
+  response.write(JSON.stringify(express === undefined));
   response.end();
 }).listen(port);
 
