@@ -13,7 +13,7 @@ var port = process.env.port || 3000;
 http.createServer(function(request, response){
   response.writeHead(200, {'content-type': 'text/plain'});
   response.end('hello world');
-});
+}).listen(port);
 
 // var express = require('express');
 // var app = express()
