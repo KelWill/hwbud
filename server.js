@@ -11,17 +11,13 @@ var http = require('http');
 var port = process.env.port || 3000;
 var express = require('express');
 
-http.createServer(function(request, response){
-  response.writeHead(200, {'content-type': 'text/plain'});
-  response.write(JSON.stringify(express === undefined));
-  response.end();
-}).listen(port);
 
 // var express = require('express');
-// var app = express()
-// app.get('/', function(request,response)){
-//   response.end('HELLO WORLD');
-// })
+var app = express()
+app.get('*', function(request,response)){
+  response.end('HELLO WORLD');
+})
+app.listen(port);
 // var port = process.env.port || 3000;
 // //   Database   //
 // //creating connection with database
