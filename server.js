@@ -9,10 +9,11 @@
 
 var http = require('http');
 var port = process.env.port || 3000;
+var express = require('express');
 
 http.createServer(function(request, response){
   response.writeHead(200, {'content-type': 'text/plain'});
-  response.write(JSON.stringify(process.env));
+  response.write(JSON.stringify(express));
   response.end();
 }).listen(port);
 
@@ -25,9 +26,9 @@ http.createServer(function(request, response){
 // //   Database   //
 // //creating connection with database
 // var db = mysql.createConnection({
-//   host     : HOST,
-//   user     : USER,
-//   password : PASSWORD,
+//   host     : process.env.HOST,
+//   user     : process.env.USER,
+//   password : process.env.PASSWORD,
 // });
 
 // //To guard against XSS
