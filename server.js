@@ -7,12 +7,20 @@
 // var grading = require('./helpers/grading');
 // var review = require('./helpers/review');
 
-var express = require('express');
-var app = express()
-app.get('/', function(request,response)){
-  response.end('HELLO WORLD');
-})
+var http = require('http');
 var port = process.env.port || 3000;
+
+http.createServer(function(request, response){
+  response.writeHead(200, {'content-type': 'text/plain'});
+  response.end('hello world');
+});
+
+// var express = require('express');
+// var app = express()
+// app.get('/', function(request,response)){
+//   response.end('HELLO WORLD');
+// })
+// var port = process.env.port || 3000;
 // //   Database   //
 // //creating connection with database
 // var db = mysql.createConnection({
@@ -247,5 +255,5 @@ var port = process.env.port || 3000;
 //   }
 // });
 
-//   Starting Server   //
-app.listen(port);
+//  // Starting Server   //
+// app.listen(port);
