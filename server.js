@@ -17,16 +17,30 @@ var db = mysql.createConnection({
   user     : process.env.USER,
   password : process.env.PASSWORD,
 });
-
+var message = '';
 //connecting to database and using correct table
 db.connect(function(err){
+  if (!err){
+    message+="connected to database";
+  }
 });
-
 db.query('USE hwBud', function(err){
-  if (err) { console.log(err); }
+  if (err) { message+=err } else {
+    message+= "and we're able to use hwbud";
+  }
 });
 
 var app = express();
+
+app.get('*', function(request, response){
+  if (!review) { response.end('no review'); }
+  if (!grading) { response.end('no grading'); }
+  if (!assignments) { response.end('no assignments'); }
+  if (!LocalStraget){ response.end('no local strategy'); }
+  if (!passport) { response.end(' no passport'); }
+  if (!mysql) { response.end('no mysql'); }
+  response.end(message);
+});
 
 //configuring express app
 app.configure(function() {;
