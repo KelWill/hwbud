@@ -41,8 +41,8 @@ app.get('*', function(request, response){
   if (!LocalStrategy){ response.end('no local strategy'); }
   if (!passport) { response.end(' no passport'); }
   if (!mysql) { response.end('no mysql'); }
-  response.write(message);
-  response.end(process.env);
+  else { response.write(message);
+  response.end(JSON.stringify(process.env)); }
 });
 
 //configuring express app
