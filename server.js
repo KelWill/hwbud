@@ -31,17 +31,6 @@ db.query('USE hwBud', function(err){
 
 var app = express();
 
-app.get('*', function(request, response){
-  if (!review) { response.end('no review'); }
-  if (!grading) { response.end('no grading'); }
-  if (!assignments) { response.end('no assignments'); }
-  if (!LocalStrategy){ response.end('no local strategy'); }
-  if (!passport) { response.end(' no passport'); }
-  if (!mysql) { response.end('no mysql'); }
-  else { response.write(message);
-  response.end("connection successfull"); }
-});
-
 //configuring express app
 app.configure(function() {;
   app.use(express.cookieParser());
