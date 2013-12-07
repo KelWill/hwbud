@@ -16,15 +16,12 @@ var db = mysql.createConnection({
   host     : process.env.HOST,
   user     : process.env.USER,
   password : process.env.PASSWORD,
+  flags    : 'SSL'
 });
 var message = '';
 //connecting to database and using correct table
 db.connect(function(err){
-  if (!err){
-    message+="connected to database";
-  } else {
-    message+=err
-  }
+  message+=err;
 });
 db.query('USE hwBud', function(err){
   if (err) { message+=err } else {
