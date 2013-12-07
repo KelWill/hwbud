@@ -17,23 +17,17 @@ var db = mysql.createConnection({
   user     : process.env.USER,
   password : process.env.PASSWORD,
 });
-var message = '';
+
 //connecting to database and using correct table
 db.connect(function(err){
-  if (err) { message = "not connected to database" } else {
-    message = "connected successfully to the database";
-  }
 });
-
 
 db.query('USE hwBud', function(err){
   if (err) { console.log(err); }
 });
 
 var app = express();
-app.get('*', function(request,response){
-  response.end(message);
-})
+
 //configuring express app
 app.configure(function() {;
   app.use(express.cookieParser());
@@ -43,11 +37,11 @@ app.configure(function() {;
   //initializing passport
   app.use(passport.initialize());
   app.use(passport.session());
+
   app.use(app.router);
   app.use(express.static(__dirname));
 });
 
-console.log(__dirname);
 
 app.get('/', function(request, response){
   response.sendfile('index.html');
@@ -76,7 +70,6 @@ app.get('/student/review', function(request, response){
 })
 
 app.post('/student/review', function(request, response){
-  console.log("request received");
   review.saveReviewProgress(request, response, db);
 });
 
@@ -92,22 +85,16 @@ app.get('/student/:teacher/:assignmentid/:optional?*', function(request, respons
   response.sendfile('assignment.html');
 })
 
-//   Passport   //
+//   Passport Authentication   //
 var isValidUserPassword = function(username, password, done){
   db.query('SELECT * FROM Users WHERE name = ?', username, function(err, rows, fields){
-    console.log('database query!');
-    console.log(rows);
     if (err){
-      console.log(err);
       return done(err);
     } else if (!rows[0]) {
-      console.log('username doesn\'t exist');
       return done(null, false);
     } else if (rows[0].password_hash !== password ){
-      console.log('incorrect password');
       return done(null, false)
     } else {
-      console.log('you logged in!');
       return done(null, rows[0]);
     }
   });
@@ -140,8 +127,6 @@ app.post('/login/student', passport.authenticate('local', { successRedirect: '/s
 app.post('/login/user', passport.authenticate('local'), function(request, response){
   response.end(JSON.stringify({loggedin: true}));
 })
-
-
 
 app.get('/login', function(request, response){
   response.sendfile(__dirname + '/login.html');
