@@ -36,7 +36,7 @@ app.get('*', function(request, response){
   if (!review) { response.end('no review'); }
   if (!grading) { response.end('no grading'); }
   if (!assignments) { response.end('no assignments'); }
-  if (!LocalStraget){ response.end('no local strategy'); }
+  if (!LocalStrategy){ response.end('no local strategy'); }
   if (!passport) { response.end(' no passport'); }
   if (!mysql) { response.end('no mysql'); }
   response.end(message);
