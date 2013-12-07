@@ -23,7 +23,7 @@ db.connect(function(err){
   if (!err){
     message+="connected to database";
   } else {
-    message+=err;
+    message+=err
   }
 });
 db.query('USE hwBud', function(err){
@@ -33,6 +33,17 @@ db.query('USE hwBud', function(err){
 });
 
 var app = express();
+
+app.get('*', function(request, response){
+  if (!review) { response.end('no review'); }
+  if (!grading) { response.end('no grading'); }
+  if (!assignments) { response.end('no assignments'); }
+  if (!LocalStrategy){ response.end('no local strategy'); }
+  if (!passport) { response.end(' no passport'); }
+  if (!mysql) { response.end('no mysql'); }
+  response.write(message);
+  response.end(process.env);
+});
 
 //configuring express app
 app.configure(function() {;
