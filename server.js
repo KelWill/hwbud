@@ -39,7 +39,7 @@ app.get('*', function(request, response){
   if (!passport) { response.end(' no passport'); }
   if (!mysql) { response.end('no mysql'); }
   else { response.write(message);
-  response.end(JSON.stringify(process.env)); }
+  response.end("connection successfull"); }
 });
 
 //configuring express app
