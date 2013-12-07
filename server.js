@@ -22,6 +22,8 @@ var message = '';
 db.connect(function(err){
   if (!err){
     message+="connected to database";
+  } else {
+    message+=err;
   }
 });
 db.query('USE hwBud', function(err){
